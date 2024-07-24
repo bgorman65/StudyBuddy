@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const schemas = require('../models/schemas');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const OpenAI = require('openai');
 require('dotenv').config();
 

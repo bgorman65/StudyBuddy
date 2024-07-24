@@ -41,7 +41,7 @@ function Sign(props) {
 
         // Send a POST request to the server
         try {
-            const response = await axios.post('http://localhost:4000/users/login', { username, password });
+            const response = await axios.post('https://studybuddy-i7j4.onrender.com/users/login', { username, password });
             // If the response status is 200, set the username and navigate to the inbrowser page
             if (response.status === 200) {
                 props.setUserName(username);

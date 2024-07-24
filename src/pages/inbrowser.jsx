@@ -105,7 +105,7 @@ function InBrowser(props) {
                 count: count,
                 entrydate : Date.now()
             };
-            const response = await axios.post('http://localhost:4000/logs/create', logData);
+            const response = await axios.post('https://studybuddy-i7j4.onrender.com/logs/create', logData);
             console.log(response.data);
         } catch (error) {
             console.error("Error creating log:", error);
@@ -136,7 +136,7 @@ function InBrowser(props) {
         // Get the prompt from the input
         const chatInput = document.getElementsByClassName("chatInput")[0];
         // Get the response from OpenAI
-        const response = await axios.post('http://localhost:4000/api/openai', { prompt: chatInput.value });
+        const response = await axios.post('https://studybuddy-i7j4.onrender.com/api/openai', { prompt: chatInput.value });
         // Add prompt to the chat
         const chatGPTDiv = document.getElementsByClassName("chatGPT")[0];
         const newPrompt = document.createElement("p");

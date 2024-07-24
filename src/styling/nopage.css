@@ -1,0 +1,35 @@
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+.errorDiv {
+    margin: 0 auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.errorHeader {
+    font-family: titilliumbold;
+    font-size: 100px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.errorPara {
+    font-family: titilliumlight;
+    font-size: 50px;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    color: white;
+}

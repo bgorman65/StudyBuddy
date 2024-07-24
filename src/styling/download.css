@@ -1,0 +1,40 @@
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+.downParent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+    z-index: 1;
+    position: relative;
+    color: white;
+}
+
+
+.rightDown { 
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-items: center;
+    margin-right: 20px;
+    padding-top: 50px;
+}   
+
+.img {
+    padding-top: 10px;
+}
+
+.picTitle {
+    font-family: titilliumbold;
+    font-size: 50px;
+    text-align: center;
+}

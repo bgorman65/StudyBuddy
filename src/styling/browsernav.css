@@ -1,0 +1,65 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+body {
+    margin: 0;
+}
+
+.browser-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    background-color: none;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+
+}
+
+.siteTitle {
+    font-family: titilliumbold;
+    font-size: 50px;
+    color: white;
+    margin-left: 75px;
+}
+
+.siteTitle:hover {
+    color: black;
+}
+
+.navul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+.userul {
+    display: flex;
+    gap: 40px;
+    margin-right: 75px;
+    list-style: none;
+}
+
+.sr {
+    font-family: titilliumlight;
+    font-size: 30px;
+    color: white;
+}
+
+.sr:hover {
+    color: black;
+}

@@ -1,0 +1,46 @@
+.logsDiv {
+    font-family: titilliumlight;
+    margin-top: 100px;
+    margin-left: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 200vh;
+    height: 85vh;
+    z-index: 1;
+    position: relative;
+    padding: 0;
+}
+
+.logsDiv table {
+    margin: 20px;
+    background-color: rgb(255,255,255,.5);
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0; 
+}
+
+.tableHeaders {
+    margin: 0; 
+    font-family: titilliumbold;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+    background-color: none;
+    border: 2px solid white;
+}
+
+.tableEntries {
+    margin: 0; 
+    font-family: titilliumlight;
+    font-size: 20px;
+    color: white;
+    z-index: 1;
+    background-color: none;
+    border: 2px solid white;
+}
+
+.back {
+    z-index: -1;
+}

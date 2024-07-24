@@ -1,0 +1,163 @@
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+.inBrowserBody {
+    background-color: none;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    z-index: 1;
+}
+
+.inBrowserFace {
+    display: inline-block;
+    width: 50%;
+    border: 2px solid white;
+    margin: 40px;
+    margin-top: 140px;
+    height: 80%;
+    background-color: rgb(255, 255, 255, .5);
+    z-index: 1;
+}
+
+.inBrowserAI {
+    background-color: rgb(255, 255, 255, .5);
+    display: inline-block;
+    width: 50%;
+    margin: 40px;
+    border: 2px solid white;
+    margin: 40px;
+    margin-top: 140px;
+    height: 80%;
+    z-index: 1;
+}
+.faceInstructions {
+    font-family: titilliumbold;
+    font-size: 20px;
+    margin: 10px;
+    text-align: center;
+}
+
+.faceHeader {
+    font-family: titilliumbold;
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.timeRangeDiv {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+
+.timeRange {
+    width: 80%;
+    display: flex;
+    color: red;
+}
+
+
+.ssButtons {
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    margin: 10px;
+}
+
+.faceInPic {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    border-radius: 50px;
+}
+
+.video {
+    object-fit: cover;
+    border-radius: 0px;
+    border: 2px solid white;
+    width: 60%;
+    height: 40%;
+}
+
+.faceValues {
+    font-family: titilliumbold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}   
+
+.back {
+    z-index: -1;
+}
+
+.browBtn {
+    border: 2px solid white;
+    border-radius: 0;
+    background-color: transparent;
+    font-family: titilliumbold;
+    width: 200px;
+    height: 50px;
+}
+
+.browBtn:hover {
+    background-color: transparent;
+    color: black;
+    border: 2px solid black;
+}
+
+.chatGPT {
+    border: 2px solid white;
+    margin: 10px;
+    background-color: rgb(255, 255, 255, .5);
+    height: 550px;
+    overflow: auto;
+}
+
+.chatForm {
+    margin: 10px;
+    display: flex;
+}
+
+.chatInput {
+    background-color: rgb(255, 255, 255, .5);
+    border: 2px solid white;
+    border-radius: 0px;
+    height: 50px;
+    flex: 1;
+}
+
+.chatPrompt {
+    font-family: titilliumbold;
+    background-color: rgba(99, 96, 96, 0.5);
+    border: 2px solid white;
+    border-radius: 15px;
+    align-content: flex-end;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+}
+
+
+.chatResponse {
+    background-color: rgb(255, 255, 255, .5);
+    border: 2px solid white;
+    border-radius: 0px;
+    flex: 1;
+    border-radius: 15px;
+    margin: 10px;
+    padding: 10px;
+}

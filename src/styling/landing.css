@@ -1,0 +1,84 @@
+.parent {
+    display: flex;
+    border: none;
+    z-index: 1;
+    position: relative;
+  }
+
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+.appname {
+    font-family: titilliumbold;
+    font-size: 180px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: black;
+    margin-top: 30px;
+    margin-left: 50px;
+    margin-right: 50px;
+    font-weight: 700;
+    font-style: normal;
+    font-variant: small-caps;
+    text-transform: none;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.appinfo {
+    font-family: titilliumlight;
+    margin-top: 20px;
+    font-size: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    color: black;
+}
+
+.first{ 
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.second {
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.landingbuttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    gap: 40px;
+}
+
+.landBtn {
+    font-family: titilliumbold;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 0px;
+    width: 200px;
+}
+
+.landBtn:hover {
+    border: 2px solid black;
+}

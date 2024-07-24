@@ -1,0 +1,80 @@
+@font-face {
+    font-family: titilliumbold;
+    src: url(../fonts/TitilliumWeb-Bold.ttf);
+}
+
+@font-face {
+    font-family: titilliumlight;
+    src: url(../fonts/TitilliumWeb-ExtraLight.ttf);
+}
+
+.platheader {
+    font-family: titilliumbold;
+    font-size: 50px;
+}
+
+.platdiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 150px;
+}
+
+.windows {
+    font-family: titilliumbold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.windows:hover {
+    color: grey;
+}
+
+.mac {
+    font-family: titilliumbold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.mac:hover {
+    color: grey;
+}
+
+.linux {
+    font-family: titilliumbold;
+    font-size: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.linux:hover {
+    color: grey;
+}
+
+.header {
+    font-family: titilliumbold;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.downBtn {
+    font-family: titilliumbold;
+    font-size: 20px;
+    background-color: transparent;
+    background-color: none;
+    border: 2px solid white;
+    border-radius: 0;
+    gap: 10px;
+    margin: 5px;
+    width: 200px;
+    color: white;
+}
+
+.downBtn:hover {
+    background-color: transparent;
+    color: grey;
+    border: 2px solid white;
+}

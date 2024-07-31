@@ -151,17 +151,17 @@ router.get("/sendReminder", async (req, res) => {
             { projection: { password: 0 } }  // Exclude specific field
         );
         console.log("Sending Test Email");
-        sendMail(user.username, user.email);
+        sendMail(user.username, user.email, time);
         console.log("Test Email Sent\n\n");
 
         // Construct the reminder date and time
         const reminderDate = new Date(`${date} ${time}`);
-        const reminderTime = new Date(reminderDate.getTime() - 15 * 60 * 1000); // 15 minutes before the reminder date and time
-        const cronTime = `${reminderTime.getMinutes()} ${reminderTime.getHours() + 2} ${reminderTime.getDate()} ${reminderTime.getMonth() + 1} *`;
+        reminderDate.setHours(0, 0, 0, 0); // Set the time to midnight
+        const cronTime = `8 21 ${reminderDate.getDate()} ${reminderDate.getMonth() + 1} *`; // Schedule at midnight on the specified day
         console.log(`Scheduling email reminder: ${cronTime} for ${user.username}`);
         // Schedule the reminder email
         cron.schedule(cronTime, () => {
-            sendMail(user.username, user.email);
+            sendMail(user.username, user.email, time);
         });
         // Send the user data
         res.json(user);
@@ -172,7 +172,7 @@ router.get("/sendReminder", async (req, res) => {
 
 
 // Send reminder email
-function sendMail(username, email) {
+function sendMail(username, email, time) {
     // Setting the headers for the email
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -184,7 +184,7 @@ function sendMail(username, email) {
         "From": {"Email": "study.buddy.reminder@gmail.com", "Name": "Study Buddy"},
         "To": [{"Email": email, "Name": username}],
         "Subject": "Reminder from Study Buddy",
-        "TextPart": "You have a study session scheduled in 15 minutes. Happy Studying!",
+        "TextPart": `You have a study session today at ${time}. Happy Studying!`,
       }]
     });
   

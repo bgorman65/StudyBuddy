@@ -11,11 +11,12 @@ function Logs(props) {
     const [logs, setLogs] = useState([]);
     const navigate = useNavigate();
 
+    
     // Get the logs
     const getLogs = async () => {
         try {
             // Get the logs by username
-            const response = await axios.get('https://studybuddy-i7j4.onrender.com/logs/username', { params: { username: props.userName } });
+            const response = await axios.get('http://localhost:4000/logs/username', { params: { username: props.userName } });
             // Set the logs state
             setLogs(response.data);
         } catch (error) {

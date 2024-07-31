@@ -11,6 +11,7 @@ import OpenAI from 'openai';
 function InBrowser(props) {
     const [count, setCount] = useState(0);
     const [time, setTime] = useState(50);
+    const [elapsedTime, setElapsedTime] = useState(0); 
     const [intervalId, setIntervalId] = useState(null); 
     const [start, setStart] = useState(0);
     const videoRef = useRef(null);
@@ -70,6 +71,9 @@ function InBrowser(props) {
             // Make api call to get faces
             const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions());
 
+            setElapsedTime(prevElapsedTime => prevElapsedTime + 1);
+            console.log(elapsedTime);
+
             // Set start time (0) if face detected, else increment start time
             setStart(prevStart => {
                 // If face detected, reset start time
@@ -98,14 +102,16 @@ function InBrowser(props) {
 
     // Create Log of study sessions
     const createLog = async () => {
+        // Add time to this
         try {
             const logData = {
                 username: props.userName,
                 interval: time,
                 count: count,
+                time: elapsedTime,
                 entrydate : Date.now()
             };
-            const response = await axios.post('https://studybuddy-i7j4.onrender.com/logs/create', logData);
+            const response = await axios.post('http://localhost:4000/logs/create', logData);
             console.log(response.data);
         } catch (error) {
             console.error("Error creating log:", error);
@@ -136,7 +142,7 @@ function InBrowser(props) {
         // Get the prompt from the input
         const chatInput = document.getElementsByClassName("chatInput")[0];
         // Get the response from OpenAI
-        const response = await axios.post('https://studybuddy-i7j4.onrender.com/api/openai', { prompt: chatInput.value });
+        const response = await axios.post('http://localhost:4000/api/openai', { prompt: chatInput.value });
         // Add prompt to the chat
         const chatGPTDiv = document.getElementsByClassName("chatGPT")[0];
         const newPrompt = document.createElement("p");

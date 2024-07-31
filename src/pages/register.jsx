@@ -40,7 +40,7 @@ function Register(props) {
 
         // Posting data
         try {
-            await axios.post('https://studybuddy-i7j4.onrender.com/users/register', postData);
+            await axios.post('http://localhost:4000/users/register', postData);
         } catch (error) {
             setErrorMsg(<p className="errorMsg">Server Error</p>);
         }
@@ -56,7 +56,7 @@ function Register(props) {
     // Function to check if the username or email is already registered
     const checkValidity = async () => {
         // Getting all usernames and emails
-        const users = await axios.get('https://studybuddy-i7j4.onrender.com/users/register');
+        const users = await axios.get('http://localhost:4000/users/register');
         // Seeing if the username or email is already registered
         const isRegistered = users.data.some(user => user.email === email || user.username === username);
         return isRegistered;

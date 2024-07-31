@@ -6,6 +6,8 @@ import Sign from './pages/signin';
 import Register from './pages/register';
 import InBrowser from './pages/inbrowser';
 import Logs from './pages/logs';
+import Statistics from './pages/statistics';
+import Schedule from './pages/schedule';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -34,6 +36,8 @@ function App() {
           <Route path='/register' element={<Register setUserName={setUserName}/>} />
           <Route path='/inbrowser' element={<InBrowser userName={userName}/>} />
           <Route path='/logs' element={<Logs userName={userName}/>} />
+          <Route path='/statistics' element={<Statistics userName={userName}/>} />
+          <Route path='/schedule' element={<Schedule userName={userName}/>} />
           <Route path="*" element={<NoPage />} />
         </Routes>
       </BrowserRouter>

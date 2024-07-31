@@ -23,6 +23,18 @@ function BrowserNav(props) {
         navigate('/inbrowser');
     }
 
+
+    // Function to navigate to the statistics page
+    const navStats = () => {
+        navigate('/statistics');
+    }
+
+
+    // Function to navigate to the schedule page
+    const navSchedule = () => {
+        navigate('/schedule');
+    }
+
     
     // Construct the browser navigation bar
     return (
@@ -30,10 +42,16 @@ function BrowserNav(props) {
             <a className="siteTitle" onClick={navHome}>Study Buddy</a>
             <ul className="navul">
                 <li>
-                    <a className="sr" onClick={navLogs}>View Logs</a>
+                    <a className="sr" onClick={navStudy}>Study</a>
                 </li>
                 <li>
-                    <a className="sr" onClick={navStudy}>Study</a>
+                    <a className="sr" onClick={navLogs}>Sessions</a>
+                </li>
+                <li>
+                    <a className="sr" onClick={navStats}>Habits</a>
+                </li>
+                <li>
+                    <a className="sr" onClick={navSchedule}>Schedule</a>
                 </li>
             </ul>
             <ul className="userul">

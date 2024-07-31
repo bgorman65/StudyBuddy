@@ -150,6 +150,9 @@ router.get("/sendReminder", async (req, res) => {
             { username },
             { projection: { password: 0 } }  // Exclude specific field
         );
+        console.log("Sending Test Email");
+        sendMail(user.username, user.email);
+        console.log("Test Email Sent\n\n");
 
         // Construct the reminder date and time
         const reminderDate = new Date(`${date} ${time}`);

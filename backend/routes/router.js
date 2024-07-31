@@ -4,7 +4,6 @@ const schemas = require('../models/schemas');
 const bcrypt = require('bcrypt');
 const OpenAI = require('openai');
 const { default: axios } = require('axios');
-const cron = require('node-cron');
 require('dotenv').config();
 
 
@@ -150,18 +149,7 @@ router.get("/sendReminder", async (req, res) => {
             { username },
             { projection: { password: 0 } }  // Exclude specific field
         );
-        console.log("Sending Test Email");
-        sendMail(user.username, user.email, time);
-        console.log("Test Email Sent\n\n");
-
-        // Construct the reminder date and time
-        const currentDate = new Date();
-        const cronTime = `${currentDate.getMinutes() + 1} ${currentDate.getHours()} ${reminderDate.getDate()} ${reminderDate.getMonth() + 1} *`; // Schedule a minute past the current time on the specified day
-        console.log(`Scheduling email reminder: ${cronTime} for ${user.username}`);
-        // Schedule the reminder email
-        cron.schedule(cronTime, () => {
-            sendMail(user.username, user.email, time);
-        });
+        sendMail(user.username, user.email, time, date);
         // Send the user data
         res.json(user);
     } catch (error) {
@@ -171,7 +159,7 @@ router.get("/sendReminder", async (req, res) => {
 
 
 // Send reminder email
-function sendMail(username, email, time) {
+function sendMail(username, email, time, date) {
     // Setting the headers for the email
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
@@ -183,7 +171,7 @@ function sendMail(username, email, time) {
         "From": {"Email": "study.buddy.reminder@gmail.com", "Name": "Study Buddy"},
         "To": [{"Email": email, "Name": username}],
         "Subject": "Reminder from Study Buddy",
-        "TextPart": `You have a study session today at ${time}. Happy Studying!`,
+        "TextPart": `You have a study session on ${date} at ${time}. Happy Studying!`,
       }]
     });
   

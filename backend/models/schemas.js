@@ -13,6 +13,7 @@ const lofSchema = new Schema({
     username: {type: String, required: true},
     interval: {type: Number, required: true},
     count: {type: Number, required: true},
+    time: {type: Number, required: true},
     entryDate: {type: Date, default: Date.now}
 });
 

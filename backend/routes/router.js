@@ -3,6 +3,8 @@ const router = express.Router();
 const schemas = require('../models/schemas');
 const bcrypt = require('bcrypt');
 const OpenAI = require('openai');
+const { default: axios } = require('axios');
+const cron = require('node-cron');
 require('dotenv').config();
 
 
@@ -81,11 +83,11 @@ router.post('/users/register', async (req, res) => {
 // Post for logs
 router.post('/logs/create', async (req, res) => { 
     // Getting the data from the request body
-    const {username, interval, count, entryDate} = req.body;
+    const {username, interval, count, time, entryDate} = req.body;
 
     try{
         // Creating a new log
-        const logData = {username, interval, count, entryDate};
+        const logData = {username, interval, count, time, entryDate};
         const newLog = new schemas.Logs(logData);
         const saveLog = await newLog.save();
         
@@ -107,7 +109,7 @@ router.get('/logs/username', async (req, res) => {
 
     try {
         // Find all logs by username
-        const logs = await schemas.Logs.find({ username }, { _id: 0, username: 1, interval: 1, count: 1, entryDate: 1 });
+        const logs = await schemas.Logs.find({ username }, { _id: 0, username: 1, interval: 1, count: 1, time:1,  entryDate: 1 });
         
         res.json(logs);
     } catch (error) {
@@ -134,5 +136,68 @@ router.post("/api/openai", async (req, res) => {
     }
 });
 
+
+// Get for sending reminder email
+router.get("/sendReminder", async (req, res) => {
+    // Getting the username from the request query
+    const username = req.query.username;
+    const date = req.query.date;
+    const time = req.query.time;
+
+    try {
+        // Get email and username by username
+        const user = await schemas.Users.findOne(
+            { username },
+            { projection: { password: 0 } }  // Exclude specific field
+        );
+
+        
+        // Construct the reminder date and time
+        const reminderDate = new Date(`${date} ${time}`);
+        const reminderTime = new Date(reminderDate.getTime() - 15 * 60 * 1000); // 15 minutes before the reminder date and time
+        const cronTime = `${reminderTime.getMinutes()} ${reminderTime.getHours()} ${reminderTime.getDate()} ${reminderTime.getMonth() + 1} *`;
+        // Schedule the reminder email
+        cron.schedule(cronTime, () => {
+            sendMail(user.username, user.email);
+        });
+        // Send the user data
+        res.json(user);
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving email' });
+    }
+});
+
+
+// Send reminder email
+function sendMail(username, email) {
+    // Setting the headers for the email
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.set('Authorization', 'Basic ' + btoa(process.env.MAILJET_KEY + ":" + process.env.MAILJET_SECRET));
+  
+    // Constructing the data for the email
+    const data = JSON.stringify({
+      "Messages": [{
+        "From": {"Email": "study.buddy.reminder@gmail.com", "Name": "Study Buddy"},
+        "To": [{"Email": email, "Name": username}],
+        "Subject": "Reminder from Study Buddy",
+        "TextPart": "You have a study session scheduled in 15 minutes. Happy Studying!",
+      }]
+    });
+  
+    // Setting the request options
+    const requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: data,
+    };
+  
+    // Sending the email
+    fetch("https://api.mailjet.com/v3.1/send", requestOptions)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+  }
+  
 
 module.exports = router;

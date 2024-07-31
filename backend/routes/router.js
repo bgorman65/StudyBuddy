@@ -156,6 +156,7 @@ router.get("/sendReminder", async (req, res) => {
         const reminderDate = new Date(`${date} ${time}`);
         const reminderTime = new Date(reminderDate.getTime() - 15 * 60 * 1000); // 15 minutes before the reminder date and time
         const cronTime = `${reminderTime.getMinutes()} ${reminderTime.getHours()} ${reminderTime.getDate()} ${reminderTime.getMonth() + 1} *`;
+        console.log(`Scheduling email for: ${cronTime} at ${reminderTime}`);
         // Schedule the reminder email
         cron.schedule(cronTime, () => {
             sendMail(user.username, user.email);
